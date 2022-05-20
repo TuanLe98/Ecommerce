@@ -1,0 +1,9 @@
+{% extends 'home.html' %}
+{% block content %}
+    <h4>Do you want to delete <a href="{% url 'single_profile' profile.id %}" style="text-decoration: none">{{ profile.name }}</a></h4>
+    <form action="{% url 'delete_user' profile.id %}" method="POST">
+    {% csrf_token %}
+    <a href="{% url 'profile' %}">Previous</a>
+    <input type="submit" value="Delete">
+    </form>
+{% endblock %}

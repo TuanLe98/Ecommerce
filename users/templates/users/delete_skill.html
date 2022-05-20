@@ -1,0 +1,10 @@
+{% extends 'home.html' %}
+{% block title %}Delete Skill{% endblock %}
+{% block content %}
+    <h4>Do you want to delete?</h4>
+    <form action="" method="POST">
+    {% csrf_token %}
+    <a href="{% url 'account' %}">Previous</a>
+    <input type="submit" value="Delete">
+    </form>
+{% endblock %}

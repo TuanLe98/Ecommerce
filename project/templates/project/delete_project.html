@@ -1,0 +1,9 @@
+{% extends 'project/home_page.html' %}
+{% block content %}
+    <h4>Do you want to delete <a href="{% url 'single-project' project.title %}" style="text-decoration: none">{{ project.title }}</a></h4>
+    <form action="" method="POST">
+    {% csrf_token %}
+    <a href="{% url 'home' %}">Previous</a>
+    <input type="submit" value="Delete">
+    </form>
+{% endblock %}

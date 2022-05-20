@@ -1,0 +1,31 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}Update Profile{% endblock %}
+{% block content %}
+    <div class="auth" style="margin-top: 20%">
+      <div class="card">
+        <div class="auth__header text-center">
+          <a href="/">
+            <img src="{% static 'images/icon.svg' %}" alt="icon" />
+          </a>
+          <h3>Account Update</h3>
+        </div>
+
+        <form action="{% url 'update_profile' %}" class="form auth__form" method="POST">
+          <!-- Input:Text -->
+            {% csrf_token %}
+            {% for field in form %}
+          <div class="form__field">
+            <label for="formInput#text">{{ field.label }} </label>
+          {{ field }}
+          </div>
+            {% endfor %}
+
+          <div class="auth__actions">
+            <input class="btn btn--sub btn--lg" type="submit" value="Update" />
+          </div>
+        </form>
+
+      </div>
+    </div>
+{% endblock %}

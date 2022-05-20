@@ -1,0 +1,41 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}Register{% endblock %}
+{% block content %}
+    <div class="auth" style="margin-top: 10%">
+      <div class="card">
+        <div class="auth__header text-center">
+          <a href="/">
+            <img style="width: 10%;height: 10%" src="{% static 'images/Apple-logo.png' %}" alt="icon" />
+          </a>
+          <h3>Account SignUp</h3>
+          <p>Create a new developer account</p>
+        </div>
+          {% if form.errors%}
+              <div class="alert  alert--error">
+        <p class="alert__message">{{form.errors}}</p>
+        <button class="alert__close">x</button>
+    </div>
+          {% endif %}
+        <form action="{% url 'register_user' %}" class="form auth__form" method="POST">
+
+          <!-- Input:Text -->
+            {% csrf_token %}
+            {% for field in form %}
+          <div class="form__field">
+            <label for="formInput#text">{{ field.label }} </label>
+            {{ field }}
+          </div>
+            {% endfor %}
+
+          <div class="auth__actions">
+            <input class="btn btn--sub btn--lg" type="submit" value="Sign  In" />
+          </div>
+        </form>
+        <div class="auth__alternative">
+          <p>Already have an Account?</p>
+          <a href="login.html">Log In</a>
+        </div>
+      </div>
+    </div>
+{% endblock %}
